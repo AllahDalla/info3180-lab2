@@ -1,5 +1,6 @@
 from app import app
 from flask import render_template, request, redirect, url_for, flash
+import datetime
 
 
 ###
@@ -29,6 +30,13 @@ def send_text_file(file_name):
     return app.send_static_file(file_dot_text)
 
 
+@app.route('/profile')
+def profile():
+    date_joined = format_date_joined(now)
+    followers = 100
+    return render_template('profile.html', joined=date_joined, followers=followers)
+
+
 @app.after_request
 def add_header(response):
     """
@@ -45,3 +53,10 @@ def add_header(response):
 def page_not_found(error):
     """Custom 404 page."""
     return render_template('404.html'), 404
+
+
+now = datetime.datetime.now()
+
+
+def format_date_joined(date):
+    return "Joined " + date.strftime("%B, %Y")

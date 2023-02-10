@@ -1,0 +1,58 @@
+{%extends 'base.html'%}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {% block css %}
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static',filename='css/styles.css')}}"
+    />
+    {% endblock %}
+
+    <title>Profile</title>
+  </head>
+  <body>
+    {% block main %}
+    <div class="my_container" id="top">
+      <img
+        src="{{ url_for('static', filename='image/profile_pic.png')}}"
+        alt="a picture of A.Davis"
+      />
+      <div id="my_information">
+        <p class="info" id="name">Al-Romario Davis</p>
+        <p class="info" id="username">@allahdalla</p>
+        <p class="info" id="where_from">St.Catherine, Jamaica</p>
+        <p class="info" id="joined">{{joined}}</p>
+      </div>
+    </div>
+    <div class="my_container" id="bottom">
+      <p id="bio">
+        I am final year Computer Science student, just trying to exit UWI. I try
+        to be hardworking and diligent in my studies. This is an assignment for
+        INFO3180. Follow me if you want . . .
+      </p>
+      <div class="numbers_container">
+        <div class="numbers">
+          <p>1</p>
+          <p>Posts</p>
+        </div>
+        <div class="numbers">
+          <p>10</p>
+          <p>Following</p>
+        </div>
+        <div class="numbers">
+          <p id="followers">{{followers}}</p>
+          <p>Followers</p>
+        </div>
+      </div>
+      <button id="btn">Follow</button>
+    </div>
+    {% endblock %} {% block js %}
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+    {% endblock %}
+  </body>
+</html>
